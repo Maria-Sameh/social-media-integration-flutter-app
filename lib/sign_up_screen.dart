@@ -1,0 +1,265 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:maria_sameh/login_task.dart';
+
+import 'firebase_auth.dart';
+import 'home_screen.dart';
+
+class SignUpScreen extends StatefulWidget {
+  SignUpScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  final emailController = TextEditingController();
+
+  final passwordController = TextEditingController();
+  late FirebaseAuthentication auth;
+  @override
+  void initState() {
+    // TODO: implement initState
+    Firebase.initializeApp().whenComplete((){
+      auth = FirebaseAuthentication();
+    });
+    super.initState();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   elevation: 0.0,
+      // ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Container(
+            margin: const EdgeInsets.only(top: 90.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Sign UP',
+                  style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
+                  height: 5.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Have an account?',
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 17.0,
+                          color: Colors.grey),
+                    ),
+                    TextButton(
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginTask()));
+                        },
+                        child: Text(
+                          'Login Now',
+                          style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              fontSize: 17.0,
+                              color: Colors.grey),
+                        )),
+                  ],
+                ),
+                const SizedBox(
+                  height: 25.0,
+                ),
+                TextFormField(
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  onFieldSubmitted: (value) {
+                    print(value);
+                  },
+                  onChanged: (value) {
+                    print(value);
+                  },
+                  decoration: const InputDecoration(
+                    labelText: 'Email Adress',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                TextFormField(
+                  controller: passwordController,
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: true,
+                  onFieldSubmitted: (value) {
+                    print(value);
+                  },
+                  onChanged: (value) {
+                    print(value);
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    suffixIcon: Icon(
+                      Icons.remove_red_eye,
+                    ),
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                Container(
+                  width: double.infinity,
+
+                  decoration: BoxDecoration(
+                      color: Color(0xff0A66C2),
+                      border:  Border.all(
+                        color: Color(0xff0A66C2),
+                      ),
+                      borderRadius: BorderRadius.circular(15.0)),
+                  child: MaterialButton(
+                    onPressed: () {
+                      setState(() {
+                        auth.createUser(emailController.text,passwordController.text ).then((value){
+                          if(value == null){
+                            print('Login Error');
+                          }else{
+                            print('$value login successfully');
+                          }
+                        });
+                      });
+                    },
+                    child: const Text(
+                      'Register',
+                      style: TextStyle(color: Colors.white, fontSize: 20.0),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 5.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Magic Link?Click',
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 15.0,
+                          color: Colors.grey),
+                    ),
+                    TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'here',
+                          style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              fontSize: 15.0,
+                              color: Colors.grey),
+                        )),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'or continue with',
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 15.0,
+                          color: Colors.grey),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 15.0,
+                ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 25.0,
+                        backgroundImage: NetworkImage(
+                            'https://i.pinimg.com/564x/fb/52/e3/fb52e39c5910bdbcc3b98d58d6ca6944--softball-catcher-avatar.jpg'),
+                      ),
+                      SizedBox(
+                        width: 30.0,
+                      ),
+                      CircleAvatar(
+                        radius: 20.0,
+                        backgroundImage: NetworkImage(
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe0adDoUGWVD3jGzfT8grK5Uhw0dLXSk3OWJwZaXI-t95suRZQ-wPF7-Az6KurXDVktV4&usqp=CAU'),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'or login later',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 15.0,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 5.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'By signing you agree to Hotdesk\'s',
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 10.0,
+                          color: Colors.grey),
+                    ),
+                    TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Terms of Services',
+                          style: TextStyle(
+                              decoration: TextDecoration.underline,
+                              fontSize: 10.0,
+                              color: Colors.blueAccent),
+                        )),
+                    Text(
+                      '&',
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 10.0,
+                          color: Colors.grey),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Privacy Policy',
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            fontSize: 10.0,
+                            color: Colors.blueAccent),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
