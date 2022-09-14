@@ -64,51 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
       ),
-      body: Container(
-        color:Colors.grey,
-        height: double.infinity,
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              color: Colors.blue,
-              child: const Text(
-                'First',
-                  style:TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white,
-                  ),
-              ) ,
-            ),
-            Container(
-              color: Colors.red,
-              child: const Text(
-                'Second',
-                style:TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white,
-                ),
-              ) ,
-            ),
-            Container(
-              color: Colors.amber,
-              child: Text(
-                'third',
-                style:TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white,
-                ),
-              ) ,
-            )
 
-
-          ],
-
-
-        ),
-      ),
 
       );
 

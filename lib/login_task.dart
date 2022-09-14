@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:maria_sameh/sign_up_screen.dart';
-// hi islam
+
 import 'firebase_auth.dart';
 import 'home_screen.dart';
 
@@ -114,12 +114,12 @@ class _LoginTaskState extends State<LoginTask> {
                 ),
                 Container(
                   width: double.infinity,
-                  decoration: new BoxDecoration(
+                  decoration:  BoxDecoration(
                       color: Colors.blueAccent,
-                      border: new Border.all(
+                      border:  Border.all(
                         color: Colors.blueAccent,
                       ),
-                      borderRadius: new BorderRadius.circular(15.0)),
+                      borderRadius: BorderRadius.circular(15.0)),
                   child: MaterialButton(
                     onPressed: () {
                       setState(() {
@@ -217,7 +217,7 @@ class _LoginTaskState extends State<LoginTask> {
                         child: CircleAvatar(
                           radius: 20.0,
                           backgroundImage: NetworkImage(
-                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe0adDoUGWVD3jGzfT8grK5Uhw0dLXSk3OWJwZaXI-t95suRZQ-wPF7-Az6KurXDVktV4&usqp=CAU'),
+                              'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/2048px-Facebook_f_logo_%282019%29.svg.png'),
                         ),
                       ),
                     ],
