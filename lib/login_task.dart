@@ -114,9 +114,9 @@ class _LoginTaskState extends State<LoginTask> {
                 ),
                 Container(
                   width: double.infinity,
-                  decoration:  BoxDecoration(
+                  decoration: BoxDecoration(
                       color: Colors.blueAccent,
-                      border:  Border.all(
+                      border: Border.all(
                         color: Colors.blueAccent,
                       ),
                       borderRadius: BorderRadius.circular(15.0)),
@@ -132,9 +132,11 @@ class _LoginTaskState extends State<LoginTask> {
                           } else {
                             print('$value login successfully');
                           }
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeScreen()));
                         });
-
                       });
                     },
                     child: const Text(
@@ -164,7 +166,6 @@ class _LoginTaskState extends State<LoginTask> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-
                     Text(
                       'continue with',
                       style: TextStyle(
@@ -181,40 +182,68 @@ class _LoginTaskState extends State<LoginTask> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      InkWell(
-                        onTap: () {
-
-                            auth.loginWithGoogle().then((value) {
-                              if (value == null) {
-                                print('sign in with google Error');
-                              } else {
-                                print('$value login successfully');
-                              }
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
-                            }).catchError((error){
-                              print(error.toString());
-                            });
-
-
+                      MaterialButton(
+                        onPressed: () {
+                          auth.loginWithGoogle().then((value) {}).catchError((error){});
                         },
-                        child: Container(
-                          child: CircleAvatar(
-                            radius: 25.0,
-                            backgroundImage: NetworkImage(
-                                'https://i.pinimg.com/564x/fb/52/e3/fb52e39c5910bdbcc3b98d58d6ca6944--softball-catcher-avatar.jpg'),
-                          ),
-                        ),
+                        child: Text('Google'),
                       ),
+                      SizedBox(width: 10.0,),
+                      MaterialButton(
+                        onPressed: () {
+                          auth.signInWithFacebook().then((value) {
+                            print('login with facebook successfully');
+                          }).catchError((error){
+                            print('login error:$error');
+
+                          });
+                        },
+                        child: Text('Facebook'),
+                      ),
+                      // InkWell(
+                      //   onTap: () {
+                      //
+                      //       auth.loginWithGoogle().then((value) {
+                      //         if (value == null) {
+                      //           print('sign in with google Error');
+                      //         } else {
+                      //           print('$value login successfully');
+                      //         }
+                      //         Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                      //       }).catchError((error){
+                      //         print(error.toString());
+                      //       });
+                      //
+                      //
+                      //   },
+                      //   child: InkWell(
+                      //     onTap: (){
+                      //       auth.signInWithFacebook().then((value) {
+                      //
+                      //       }).catchError((error){
+                      //
+                      //       });
+                      //
+                      //     },
+                      //     child: Container(
+                      //       child: CircleAvatar(
+                      //         radius: 25.0,
+                      //         backgroundImage: NetworkImage(
+                      //             'https://i.pinimg.com/564x/fb/52/e3/fb52e39c5910bdbcc3b98d58d6ca6944--softball-catcher-avatar.jpg'),
+                      //       ),
+                      //     ),
+                      //   ),
+                      // ),
                       SizedBox(
                         width: 30.0,
                       ),
-                      Container(
-                        child: CircleAvatar(
-                          radius: 20.0,
-                          backgroundImage: NetworkImage(
-                              'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/2048px-Facebook_f_logo_%282019%29.svg.png'),
-                        ),
-                      ),
+                      // Container(
+                      //   child: CircleAvatar(
+                      //     radius: 20.0,
+                      //     backgroundImage: NetworkImage(
+                      //         'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/2048px-Facebook_f_logo_%282019%29.svg.png'),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
@@ -238,7 +267,6 @@ class _LoginTaskState extends State<LoginTask> {
                 SizedBox(
                   height: 5.0,
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

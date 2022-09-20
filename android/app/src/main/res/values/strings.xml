@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <string name="app_name">tsf intern</string>
+    <string name="facebook_app_id">470707794780178</string>
+    <string name="fb_login_protocol_scheme">fb470707794780178</string>
+    <string name="facebook_client_token">b9b35dbad660ba86e931ad11d9c18a73</string>
+
+</resources>
+
