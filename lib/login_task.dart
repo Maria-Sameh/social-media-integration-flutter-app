@@ -144,37 +144,32 @@ class _LoginTaskState extends State<LoginTask> {
                   ),
                 ),
                 SizedBox(
-                  height: 5.0,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Magic Link?Click',
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 15.0,
-                          color: Colors.grey),
-                    ),
-                    TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'here',
-                          style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              fontSize: 15.0,
-                              color: Colors.grey),
-                        )),
-                  ],
+                  height: 40.0,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'or continue with',
+                      '-OR-',
                       style: TextStyle(
                           fontWeight: FontWeight.normal,
-                          fontSize: 15.0,
+                          fontSize: 20.0,
+                          color: Colors.grey),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+
+                    Text(
+                      'continue with',
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 20.0,
                           color: Colors.grey),
                     ),
                   ],
@@ -234,7 +229,7 @@ class _LoginTaskState extends State<LoginTask> {
                       style: TextStyle(
                         decoration: TextDecoration.underline,
                         fontWeight: FontWeight.normal,
-                        fontSize: 15.0,
+                        fontSize: 17.0,
                         color: Colors.grey,
                       ),
                     ),
@@ -243,6 +238,7 @@ class _LoginTaskState extends State<LoginTask> {
                 SizedBox(
                   height: 5.0,
                 ),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

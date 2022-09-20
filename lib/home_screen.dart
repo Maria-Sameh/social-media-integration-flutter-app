@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         //   Icons.menu,
         // ),
         title:  Text(
-            'Myapp'
+            'My profile'
         ),
         actions:
         [
