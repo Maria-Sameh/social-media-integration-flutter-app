@@ -21,7 +21,27 @@ class LoginFacebookErrorState extends LoginStates {
 
   LoginFacebookErrorState(this.error);
 }
+
+
 class LoginGetFacebookUserInfoState extends LoginStates{}
+
+class LoginCreateEmailAndPasswordLoadingState extends LoginStates{}
+
+class LoginCreateEmailAndPasswordSuccessState extends LoginStates{}
+
+class LoginCreateEmailAndPasswordErrorState extends LoginStates{
+  final String error;
+  LoginCreateEmailAndPasswordErrorState(this.error);
+}
+
+class LoginWithEmailAndPasswordLoadingState extends LoginStates{}
+
+class LoginWithEmailAndPasswordSuccessState extends LoginStates{}
+
+class LoginWithEmailAndPasswordErrorState extends LoginStates{
+  final String error;
+  LoginWithEmailAndPasswordErrorState(this.error);
+}
 
 class LogoutLoadingState extends LoginStates{}
 

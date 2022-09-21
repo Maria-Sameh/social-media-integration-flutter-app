@@ -65,6 +65,7 @@ class LoginCubit extends Cubit<LoginStates> {
     return null;
   }
 
+// get facebook user data
   Future<void> getUserInfo() async {
     // accessToken = result.accessToken;
     final data = await FacebookAuth.i.getUserData();
@@ -76,11 +77,40 @@ class LoginCubit extends Cubit<LoginStates> {
     emit(LoginGetFacebookUserInfoState());
   }
 
+  Future<String?> createUser(String email,String password)async{
+    try{
+      emit(LoginCreateEmailAndPasswordLoadingState());
+      UserCredential credential  = await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+      emit(LoginCreateEmailAndPasswordSuccessState());
+
+      return credential.user!.uid;
+    }on FirebaseAuthException catch(e){
+      emit(LoginCreateEmailAndPasswordErrorState(e.toString()));
+
+      return null;
+    }
+
+  }
+  Future<String?> login(String email, String password)async{
+    try{
+      emit(LoginWithEmailAndPasswordLoadingState());
+      UserCredential credential = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+      emit(LoginWithEmailAndPasswordSuccessState());
+
+      return credential.user!.uid;
+    }on FirebaseAuthException catch(e){
+      emit(LoginWithEmailAndPasswordErrorState(e.toString()));
+
+      return null;
+    }
+  }
+
   Future<bool> logout() async {
     try {
       emit(LogoutLoadingState());
       googleSignIn.disconnect();
       FacebookAuth.instance.logOut();
+      _firebaseAuth.signOut();
       currentUser = null;
       accessToken = null;
 

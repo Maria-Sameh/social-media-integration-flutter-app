@@ -5,6 +5,7 @@ import 'package:maria_sameh/shared/cubit/cubit.dart';
 import 'package:maria_sameh/shared/cubit/states.dart';
 import 'package:maria_sameh/sign_up_screen.dart';
 
+import '../user_data/email_and_pass_user_details.dart';
 import '../user_data/fb_user_data.dart';
 import '../user_data/google_user_data.dart';
 
@@ -75,10 +76,10 @@ class _LoginTaskState extends State<LoginTask> {
                           ),
                           TextButton(
                               onPressed: () {
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) => SignUpScreen()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => SignUpScreen()));
                               },
                               child: Text(
                                 'Register here',
@@ -140,22 +141,22 @@ class _LoginTaskState extends State<LoginTask> {
                             borderRadius: BorderRadius.circular(15.0)),
                         child: MaterialButton(
                           onPressed: () {
-                            // setState(() {
-                            //   auth
-                            //       .login(
-                            //       emailController.text, passwordController.text)
-                            //       .then((value) {
-                            //     if (value == null) {
-                            //       print('Login Error');
-                            //     } else {
-                            //       print('$value login successfully');
-                            //     }
-                            //     Navigator.push(
-                            //         context,
-                            //         MaterialPageRoute(
-                            //             builder: (context) => HomeScreen()));
-                            //   });
-                            // });
+
+                              cubit
+                                  .login(
+                                  emailController.text, passwordController.text)
+                                  .then((value) {
+                                if (value == null) {
+                                  print('Login Error');
+                                } else {
+                                  print('$value login successfully');
+                                }
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => UserDetails()));
+                              });
+
                           },
                           child: const Text(
                             'let\'s get rolling!',
