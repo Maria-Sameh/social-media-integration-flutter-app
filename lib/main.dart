@@ -1,11 +1,14 @@
+import 'package:bloc/bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:maria_sameh/login_screen.dart';
-import 'package:maria_sameh/login_task.dart';
+import 'package:maria_sameh/modules/login/login_task.dart';
+import 'package:maria_sameh/shared/bloc_observer.dart';
 
-import 'home_screen.dart';
-import 'messanger_screen.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
+  await Firebase.initializeApp();
   runApp( const MyApp());
 }
 
@@ -21,6 +24,6 @@ class MyApp extends StatelessWidget
       debugShowCheckedModeBanner: false,
       home:LoginTask(),
     );
-//slfjdlfdsff
+
   }
 }
